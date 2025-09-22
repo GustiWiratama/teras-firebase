@@ -3,6 +3,7 @@
 
 import { db } from "@/lib/firebase";
 import { collection, getDocs } from "firebase/firestore";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 
 interface Barang {
@@ -43,10 +44,12 @@ export default function BarangPage() {
             key={barang.id}
             className="card hover:shadow-2xl transform hover:scale-105 transition-transform duration-200 rounded-xl p-3"
           >
-            <img
+            <Image
               src={barang.gambar}
               alt={barang.nama}
               className="w-full md:h-64 object-cover card-body"
+              width={200}
+              height={200}
             />
             <h2 className="text-lg font-bold">{barang.nama}</h2>
             <p>{barang.harga}/pcs</p>

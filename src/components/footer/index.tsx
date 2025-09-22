@@ -1,8 +1,9 @@
 import Image from "next/image";
+import Link from "next/link";
 
 const Footer = () => {
   return (
-    <div className="text-center md:text-start p-7 md:px-32 bg-orange-400 text-white">
+    <div className="text-center md:text-start p-7 md:px-32 bg-orange-400 text-white bottom-0">
       <div className="md:flex foot justify-between">
         <div className="title">
           <h1 className="md:text-2xl font-semibold">Téras Bali</h1>
@@ -16,30 +17,30 @@ const Footer = () => {
             Sosial Media
           </h1>
           <div className="social-logo  flex items-center justify-center gap-5">
-            <a href="/">
+            <Link href="/">
               <Image
                 src="/wa-logo.svg"
                 alt="Chat Admin"
                 width={40}
                 height={40}
               />
-            </a>
-            <a href="/">
+            </Link>
+            <Link href="/">
               <Image
                 src="/wa-logo.svg"
                 alt="Chat Admin"
                 width={40}
                 height={40}
               />
-            </a>
-            <a href="/">
+            </Link>
+            <Link href="/">
               <Image
                 src="/wa-logo.svg"
                 alt="Chat Admin"
                 width={40}
                 height={40}
               />
-            </a>
+            </Link>
           </div>
         </div>
       </div>
