@@ -1,5 +1,8 @@
+// app/barang/page.tsx atau pages/barang.tsx
+"use client";
+
 import { db } from "@/lib/firebase";
-import { get, ref } from "firebase/database";
+import { collection, getDocs } from "firebase/firestore";
 import { useEffect, useState } from "react";
 
 interface Barang {
@@ -15,18 +18,16 @@ export default function BarangPage() {
 
   useEffect(() => {
     const ambilData = async () => {
-      const barangRef = ref(db, "products");
-      const snapshot = await get(barangRef);
-
-      if (snapshot.exists()) {
-        const data = snapshot.val();
-        const barangList: Barang[] = Object.keys(data).map((key) => ({
-          id: key,
-          ...data[key],
+      try {
+        console.log("DB instance:", db); // debug cek db
+        const querySnapshot = await getDocs(collection(db, "products"));
+        const barangList: Barang[] = querySnapshot.docs.map((doc) => ({
+          id: doc.id,
+          ...(doc.data() as Omit<Barang, "id">),
         }));
         setDataBarang(barangList);
-      } else {
-        console.log("Data kosong");
+      } catch (err) {
+        console.error("Error ambil data:", err);
       }
     };
 
@@ -34,9 +35,9 @@ export default function BarangPage() {
   }, []);
 
   return (
-    <div className="p-14">
+    <div className="p-4 md:p-14">
       <h1 className="hidden md:flex md:text-2xl mb-8">Daftar Barang</h1>
-      <div className="grid grid-cols-2 cols md:grid-cols-4  gap-4">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         {dataBarang.map((barang) => (
           <div
             key={barang.id}
@@ -45,10 +46,10 @@ export default function BarangPage() {
             <img
               src={barang.gambar}
               alt={barang.nama}
-              className="w-full h-64 object-cover card-body "
+              className="w-full md:h-64 object-cover card-body"
             />
             <h2 className="text-lg font-bold">{barang.nama}</h2>
-            <p>Harga: {barang.harga}</p>
+            <p>{barang.harga}/pcs</p>
             <p>Stok: {barang.stok}</p>
           </div>
         ))}

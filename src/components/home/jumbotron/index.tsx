@@ -5,7 +5,7 @@ const Jumbotron = () => {
     <div className="flex flex-col-reverse md:flex-col items-center justify-end md:justify-center h-1/3 md:h-screen bg-cover  md:bg-[url('/jumbo-transformed.png')]">
       <div className="jumbo-text  text-center">
         <h1 className="hidden md:block md:text-4xl mt-10 md:mt-0 leading-snug mb-4">
-          Jadikan atapmu lebih keras
+          Jadikan atapmu lebih berkelas
           <p>
             dengan <span className="text-orange-400">Téras</span>.
           </p>
