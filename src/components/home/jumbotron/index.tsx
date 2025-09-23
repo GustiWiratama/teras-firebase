@@ -14,11 +14,11 @@ const Jumbotron = () => {
       <div className="search flex mt-[6em] md:mt-0">
         <input
           type="text"
-          className="px-4 rounded-full border border-gray-300 focus:outline-none focus:ring-1 focus:ring-black"
+          className="px-4 rounded-full border border-gray-300 focus:outline-none focus:ring-1 focus:ring-black w-50 md:w-auto sm:w-30 "
           placeholder="cari barang..."
         />
         <Image
-          className="m-3 cursor-pointer
+          className="m-3 cursor-pointer 
           "
           src="/search.svg"
           alt="search"
